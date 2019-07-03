@@ -1,0 +1,6 @@
+i3 > .config/.i3/config
+mpv > .config/mpv/mpv.conf
+polybar > .config/polybar/config
+polybar.sh > .i3/polybar.sh
+tap.sh > ~/
+.zshrc > ~/
