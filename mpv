@@ -1,0 +1,31 @@
+#   ____ ___  ____ _   __
+#  / __ `__ \/ __ \ | / /
+# / / / / / / /_/ / |/ / 
+#/_/ /_/ /_/ .___/|___/  by wyjek
+#         /_/      
+
+# windows stuff       
+#osd-font='Segoe UI'        
+#vo=direct3d
+#autofit-larger=60%x60%
+#geometry=99%:12%
+#screenshot-directory=C:\Users\Tomek\Pictures\skriny
+
+# linux stuff
+
+# universal stuff
+volume-max=100
+sub-font='Verdana'
+sub-font-size=56
+osd-border-size=2
+ytdl-format=bestvideo[height<=?720][fps<=?30][vcodec!=?vp9]+bestaudio/best
+#sub-shadow-offset=2.3
+sub-shadow-offset=2.6
+sub-border-size=1
+sub-shadow-color=0.0/0.0/0.0/0.4
+sub-border-color=0.0/0.0/0.0/0.6
+keep-open=yes
+sub-color='#e5d200'
+#'#ccbb00'
+# solarajzd '#b58900'
+#'#EEDC00'

@@ -1,0 +1,291 @@
+;                 __      __              
+;    ____  ____  / /_  __/ /_  ____ ______
+;   / __ \/ __ \/ / / / / __ \/ __ `/ ___/
+;  / /_/ / /_/ / / /_/ / /_/ / /_/ / /    
+; / .___/\____/_/\__, /_.___/\__,_/_/     by wyjek
+;/_/            /____/                    
+;
+[colors]
+bg = ${xrdb:color0:#222}
+bg-alt = ${xrdb:color8:#222}
+fg = ${xrdb:color7:#222}
+x1 = ${xrdb:color1:#222}
+x2 = ${xrdb:color2:#222}
+x3 = ${xrdb:color3:#222}
+x4 = ${xrdb:color4:#222}
+x5 = ${xrdb:color5:#222}
+x6 = ${xrdb:color6:#222}
+x8 = ${xrdb:color8:#222}
+
+[settings]
+format-padding = 1
+;format-foreground = ${colors.fg}
+;format-foreground = #DDEEEE
+format-foreground = #DDDDDD
+;format-background = ${colors.bg}
+;bg z xresources:
+;format-background = #990a0f14
+;format-background = #A0000000
+;format-underline = #FF00AA
+;format-underline = #5282BB
+format-underline = #FF4466
+
+[bar/wyjek]
+width = 100%
+height = 16px
+radius = 0.0
+fixed-center = true
+;background = #00000000
+background = #000000
+;background = ${colors.bg}
+;background = #AA0a0f14
+;foreground = ${colors.fg}
+foreground = ${settings.format-foreground}
+module-margin-right = 0
+;font-0 = NotoSans Nerd Font:style=Condensed Medium:size=11
+;font-0 = Ubuntu Mono:style=Regular:size=10:antialias=false
+font-0 = GohuFont:style=Regular:size=11:antialias=false;1
+;font-0 = fxd:style=Regular:size=10:antialias=false;1
+;font-0 = Terminus:style=Regular:size=11:antialias=false;1
+;font-0 = Tamsyn:style=Regular:size=12:antialias=false;1
+font-1 = Material Design Icons:style=Regular:size=10;1
+;font-1 = FontAwesome:style=Regular;10
+font-2 = GohuFont:style=Bold:size=11:antialias=false;1
+
+modules-left = i3 xwindow
+modules-center = mpd
+modules-right = pulseaudio memory cpu wlan eth date 
+;nieużywane = filesystem xbacklight battery temperature
+tray-position = right
+tray-background = ${settings.format-background}
+tray-padding = 1
+tray-scale = 1.0
+cursor-click = pointer
+cursor-scroll = ns-resize
+;separator = |
+underline-size = 0
+border-size = 0
+border-color = #00000000
+padding-right = 0
+
+[module/gownowdupie]
+type = custom/text
+content =  Live Love Laugh 
+
+;[module/bspwm]
+;type = internal/bspwm
+;label-focused = %index%
+;label-focused-background = ${colors.x1}
+;label-focused-underline= ${colors.x1}
+;label-focused-padding = 2
+;label-occupied = %index%
+;label-occupied-padding = 2
+;label-urgent = %index%!
+;label-urgent-background = ${colors.x1}
+;label-urgent-padding = 2
+;label-empty = %index%
+;label-empty-foreground = ${colors.x1}
+;label-empty-padding = 2
+
+[module/i3]
+type = internal/i3
+format = <label-state> <label-mode>
+index-sort = true
+wrapping-scroll = false
+label-mode-padding = 2
+label-mode-foreground = #EE5555
+;label-mode-background = #000000
+label-focused = %index%
+label-focused-font = 3
+;label-focused = %icon%
+;label-focused-background = #00CCBB
+;label-focused-background = #FFCC00
+label-focused-background = #8888FF
+;label-focused-foreground = #000000
+;label-focused-foreground = #00CCBB
+;label-focused-foreground = #FFAA00
+label-focused-foreground = #000000
+label-focused-underline = #00CCBB
+label-focused-padding = 1
+;label-focused-underline = ${module/bspwm.label-focused-underline}
+label-unfocused = %index%
+label-unfocused-padding = 1
+label-unfocused-background = #000000
+;label-unfocused-underline = ${settings.format-background}
+label-unfocused-underline = #00000000
+label-visible = %index%
+label-visible-background = ${self.label-focused-background}
+label-visible-padding = 1
+label-urgent = %index%
+;label-urgent-background = #000000
+label-urgent-background = #FF5566
+;label-urgent-foreground = #EE5555
+label-urgent-foreground = #000000
+label-urgent-padding = 1
+label-urgent-font = 3
+format-padding = 0
+
+;ws-icon-0 = 1;
+;ws-icon-1 = 2;
+;ws-icon-2 = 3;
+;ws-icon-3 = 4;
+;ws-icon-4 = 5;
+;ws-icon-default = 
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+label = %percentage:2%%
+format-underline = ${self.format-prefix-foreground}
+;format-prefix = "cpu "
+format-prefix = "cpu "
+;format-prefix-foreground = #66BBFF
+format-prefix-foreground = #66DDAA
+format-foreground = ${self.format-prefix-foreground}
+
+[module/memory]
+type = internal/memory
+interval = 2
+;format-prefix = "mem "
+format-prefix = "mem "
+;format-prefix-foreground = #EEDD88
+format-prefix-foreground = #EECC88
+;format-prefix-foreground = #66DDAA
+label = %percentage_used%%
+;format-foreground = ${colors.bg}
+;format-background = ${colors.fg}
+format-underline = ${self.format-prefix-foreground}
+format-foreground = ${self.format-prefix-foreground}
+
+[module/date]
+type = internal/date
+interval = 5
+date =
+date-alt = " %Y-%m-%d"
+time = %H:%M
+time-alt = %H:%M:%S
+;format-prefix =  "肋 "
+;format-prefix-foreground =  #6699FF
+;format-prefix-foreground =  #66BBFF
+format-prefix-foreground =  #66AAFF
+;format-prefix-margin-right = 2
+label = %time%
+format = <label>
+format-underline = ${self.format-prefix-foreground}
+format-foreground = ${self.format-prefix-foreground}
+
+[module/pulseaudio]
+type = internal/pulseaudio
+format-volume = <label-volume> 
+;format-volume-prefix = " "
+format-volume-prefix = "vol "
+format-volume-prefix-foreground = #FF5566
+label-volume = %percentage%%
+label-muted =  muted
+label-muted-foreground = #666
+format-volume-underline = ${self.format-volume-prefix-foreground}
+format-volume-foreground = ${self.format-volume-prefix-foreground}
+
+[module/temperature]
+type = internal/temperature
+thermal-zone = 0
+warn-temperature = 60
+format =  <label>
+format-warn =  <label-warn>
+label = %temperature-c%
+label-warn = %temperature-c%
+label-warn-foreground = ${colors.x5}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = AC
+full-at = 98
+format-charging = charging <label-charging> 
+format-discharging = <ramp-capacity> <label-discharging>
+format-full-prefix = " "
+format-full-prefix-foreground = ${colors.fg}
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+ramp-capacity-foreground = ${colors.fg}
+
+[module/xwindow]
+type = internal/xwindow
+;label = %title:0:150:...%
+label = %title%
+label-maxlen = 154
+label-foreground = ${settings.format-foreground}
+
+[module/filesystem]
+type = internal/fs
+interval = 25
+mount-0 = /
+label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%%
+label-unmounted = %mountpoint% not mounted
+label-unmounted-foreground = ${colors.x1}
+
+[module/mpd]
+type = internal/mpd
+format-online = <label-song>  <icon-prev> <icon-stop> <toggle> <icon-next>
+icon-prev = 
+icon-stop = 
+icon-play = 
+icon-pause = 
+icon-next = 
+label-song-maxlen = 25
+label-song-ellipsis = true
+
+[module/xbacklight]
+type = internal/xbacklight
+format = <label> <bar>
+label = BL
+bar-width = 10
+bar-indicator = |
+bar-indicator-foreground = #fff
+bar-indicator-font = 2
+bar-fill = ─
+bar-fill-font = 2
+bar-fill-foreground = #9f78e1
+bar-empty = ─
+bar-empty-font = 2
+bar-empty-foreground = ${colors.x1}
+
+[module/backlight-acpi]
+inherit = module/xbacklight
+type = internal/backlight
+card = intel_backlight
+
+[module/wlan]
+type = internal/network
+interface = wlp0s4f1u2
+interval = 3.0
+format-connected = <ramp-signal> 
+format-connected-foreground = #FFdd00
+format-connected-font = 2
+;<label-connected>
+label-connected = %essid%
+format-disconnected =
+ramp-signal-0 = 冷
+ramp-signal-1 = 爛
+ramp-signal-2 = 嵐
+ramp-signal-3 = 襤
+ramp-signal-4 = 蠟
+ramp-font = 2
+format-connected-underline = #FFDD00
+;format-connected-prefix = "wifi "
+;format-connected-prefix-foreground = #FFDD00
+
+[module/eth]
+type = internal/network
+interface = irda0
+interval = 3.0
+format-connected-underline = #55aa55
+format-connected-prefix = " "
+format-connected-prefix-foreground = ${colors.x1}
+label-connected = %local_ip%
+format-disconnected =
