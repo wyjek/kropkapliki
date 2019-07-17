@@ -21,7 +21,7 @@ x8 = ${xrdb:color8:#222}
 format-padding = 1
 ;format-foreground = ${colors.fg}
 ;format-foreground = #DDEEEE
-format-foreground = #DDDDDD
+format-foreground = #CCCCCC
 ;format-background = ${colors.bg}
 ;bg z xresources:
 ;format-background = #990a0f14
@@ -32,7 +32,7 @@ format-underline = #FF4466
 
 [bar/wyjek]
 width = 100%
-height = 16px
+height = 13px
 radius = 0.0
 fixed-center = true
 ;background = #00000000
@@ -44,28 +44,28 @@ foreground = ${settings.format-foreground}
 module-margin-right = 0
 ;font-0 = NotoSans Nerd Font:style=Condensed Medium:size=11
 ;font-0 = Ubuntu Mono:style=Regular:size=10:antialias=false
-font-0 = GohuFont:style=Regular:size=11:antialias=false;1
+font-0 = GohuFont:style=Regular:size=11:antialias=false;2
 ;font-0 = fxd:style=Regular:size=10:antialias=false;1
 ;font-0 = Terminus:style=Regular:size=11:antialias=false;1
 ;font-0 = Tamsyn:style=Regular:size=12:antialias=false;1
-font-1 = Material Design Icons:style=Regular:size=10;1
+font-1 = Material Design Icons:style=Regular:size=10;2
 ;font-1 = FontAwesome:style=Regular;10
-font-2 = GohuFont:style=Bold:size=11:antialias=false;1
+font-2 = GohuFont:style=Bold:size=11:antialias=false;2
 
 modules-left = i3 xwindow
 modules-center = mpd
-modules-right = pulseaudio memory cpu wlan eth date 
-;nieużywane = filesystem xbacklight battery temperature
+modules-right = battery pulseaudio wlan eth date 
+;nieużywane = filesystem xbacklight temperature memory cpu
 tray-position = right
-tray-background = ${settings.format-background}
+tray-background = ${self.background}
 tray-padding = 1
 tray-scale = 1.0
 cursor-click = pointer
 cursor-scroll = ns-resize
 ;separator = |
 underline-size = 0
-border-size = 0
-border-color = #00000000
+border-size = 2
+border-color = #000000
 padding-right = 0
 
 [module/gownowdupie]
@@ -203,16 +203,22 @@ type = internal/battery
 battery = BAT0
 adapter = AC
 full-at = 98
-format-charging = charging <label-charging> 
-format-discharging = <ramp-capacity> <label-discharging>
-format-full-prefix = " "
-format-full-prefix-foreground = ${colors.fg}
+format-charging = <label-charging> 
+;format-discharging = <ramp-capacity> <label-discharging>
+format-discharging = <label-discharging>
+;format-full-prefix = " "
+format-full-prefix = "bat "
+format-charging-prefix = "bat ~"
+format-discharging-prefix = "bat "
+;format-full-prefix-foreground = ${colors.fg}
 ramp-capacity-0 = 
 ramp-capacity-1 = 
 ramp-capacity-2 = 
 ramp-capacity-3 = 
 ramp-capacity-4 = 
-ramp-capacity-foreground = ${colors.fg}
+;ramp-capacity-foreground = ${colors.fg}
+format-discharging-foreground = #DD66FF
+format-charging-foreground = #DD66FF
 
 [module/xwindow]
 type = internal/xwindow
@@ -262,7 +268,10 @@ card = intel_backlight
 
 [module/wlan]
 type = internal/network
-interface = wlp0s4f1u2
+;pc:
+;interface = wlp0s4f1u2
+;t41:
+interface = wlp2s2
 interval = 3.0
 format-connected = <ramp-signal> 
 format-connected-foreground = #FFdd00
