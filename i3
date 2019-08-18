@@ -32,7 +32,7 @@ set_from_resource $x8 i3wm.color8 #f0f0f0
 
 
 # class                 border  backgr. text    indicator child_border
-client.focused          $x6 	$x6		$bg		$x1		  $x6
+client.focused          $x6 	$x6		$bg		$x1		  #3F51B5
 client.focused_inactive $x8 	$x8 	$bg 	$x1   	  $x8
 client.unfocused        $x6		$bg 	$fg	 	$x1   	  $x8
 client.urgent           #2f343a #900000 #ffffff $x1   	  #900000
@@ -81,7 +81,10 @@ font pango:inconsolata 10
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec  --no-startup-id i3-sensible-terminal
+#bindsym $mod+Return exec  --no-startup-id i3-sensible-terminal
+
+#after installing st
+bindsym $mod+Return exec  --no-startup-id st
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -230,12 +233,14 @@ exec_always --no-startup-id ~/.i3/polybar.sh &
 exec --no-startup-id ~/tap.sh &
 #exec --no-startup-id watch -n 600 feh --randomize --bg-fill ~/tapty/* &>/dev/null &
 #exec_always --no-startup-id compton -b --unredir-if-possible --vsync --glx-no-stencil --config ~/.config/compton/compton.conf
-exec --no-startup-id wal --theme sexy-gotham
+exec --no-startup-id wal --theme base16-material
 exec --no-startup-id setxkbmap pl
 
 bindsym Print exec --no-startup-id maim --hidecursor | xclip -selection clipboard -t image/png
+bindsym Shift+Print exec --no-startup-id maim --hidecursor -s | xclip -selection clipboard -t image/png
+bindsym $mod+t exec telegram-desktop
 bindsym $mod+z exec firefox
-bindsym $mod+x exec nautilus
+bindsym $mod+x exec pcmanfm
 bindsym $mod+c exec /bin/sh "/home/wyjek/jd2/JDownloader2"
 bindsym $mod+b exec geany
 bindsym $mod+m exec feh --randomize --bg-fill ~/tapty/*

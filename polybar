@@ -16,6 +16,7 @@ x4 = ${xrdb:color4:#222}
 x5 = ${xrdb:color5:#222}
 x6 = ${xrdb:color6:#222}
 x8 = ${xrdb:color8:#222}
+red = #ef5350
 
 [settings]
 format-padding = 1
@@ -44,16 +45,27 @@ foreground = ${settings.format-foreground}
 module-margin-right = 0
 ;font-0 = NotoSans Nerd Font:style=Condensed Medium:size=11
 ;font-0 = Ubuntu Mono:style=Regular:size=10:antialias=false
-font-0 = GohuFont:style=Regular:size=11:antialias=false;2
+
+;void:
+;font-0 = GohuFont:style=Regular:size=11:antialias=false;2
+
+;arch:
+font-0 = "Gohu GohuFont:style=Regular:size=11:size=11:antialias=false;2"
+
 ;font-0 = fxd:style=Regular:size=10:antialias=false;1
 ;font-0 = Terminus:style=Regular:size=11:antialias=false;1
 ;font-0 = Tamsyn:style=Regular:size=12:antialias=false;1
 font-1 = Material Design Icons:style=Regular:size=10;2
 ;font-1 = FontAwesome:style=Regular;10
-font-2 = GohuFont:style=Bold:size=11:antialias=false;2
+
+;void:
+;font-2 = GohuFont:style=Bold:size=11:antialias=false;2
+
+;arch:
+;font-2 = "Gohu GohuFont:style=Bold:size=11:antialias=false;2"
 
 modules-left = i3 xwindow
-modules-center = mpd
+modules-center = mpd date2
 modules-right = battery pulseaudio wlan eth date 
 ;nieużywane = filesystem xbacklight temperature memory cpu
 tray-position = right
@@ -67,6 +79,8 @@ underline-size = 0
 border-size = 2
 border-color = #000000
 padding-right = 0
+
+locale = pl_PL.UTF-8
 
 [module/gownowdupie]
 type = custom/text
@@ -100,7 +114,8 @@ label-focused-font = 3
 ;label-focused = %icon%
 ;label-focused-background = #00CCBB
 ;label-focused-background = #FFCC00
-label-focused-background = #8888FF
+;label-focused-background = #8888FF
+label-focused-background = ${colors.red}
 ;label-focused-foreground = #000000
 ;label-focused-foreground = #00CCBB
 ;label-focused-foreground = #FFAA00
@@ -111,6 +126,7 @@ label-focused-padding = 1
 label-unfocused = %index%
 label-unfocused-padding = 1
 label-unfocused-background = #000000
+label-unfocused-foreground = ${colors.red}
 ;label-unfocused-underline = ${settings.format-background}
 label-unfocused-underline = #00000000
 label-visible = %index%
@@ -160,16 +176,35 @@ format-foreground = ${self.format-prefix-foreground}
 [module/date]
 type = internal/date
 interval = 5
-date =
+date = %A, %e %B
 date-alt = " %Y-%m-%d"
 time = %H:%M
 time-alt = %H:%M:%S
 ;format-prefix =  "肋 "
 ;format-prefix-foreground =  #6699FF
 ;format-prefix-foreground =  #66BBFF
-format-prefix-foreground =  #66AAFF
+;format-prefix-foreground =  #66AAFF
+format-prefix-foreground =  ${colors.red}
 ;format-prefix-margin-right = 2
 label = %time%
+format = <label>
+format-underline = ${self.format-prefix-foreground}
+format-foreground = ${self.format-prefix-foreground}
+
+[module/date2]
+type = internal/date
+interval = 5
+date = %A, %e %B
+date-alt = " %Y-%m-%d"
+time = %H:%M
+time-alt = %H:%M:%S
+;format-prefix =  "肋 "
+;format-prefix-foreground =  #6699FF
+;format-prefix-foreground =  #66BBFF
+;format-prefix-foreground =  #66AAFF
+format-prefix-foreground =  ${colors.red}
+;format-prefix-margin-right = 2
+label = %date%
 format = <label>
 format-underline = ${self.format-prefix-foreground}
 format-foreground = ${self.format-prefix-foreground}
@@ -179,7 +214,8 @@ type = internal/pulseaudio
 format-volume = <label-volume> 
 ;format-volume-prefix = " "
 format-volume-prefix = "vol "
-format-volume-prefix-foreground = #FF5566
+;format-volume-prefix-foreground = #FF5566
+format-volume-prefix-foreground = ${colors.red}
 label-volume = %percentage%%
 label-muted =  muted
 label-muted-foreground = #666
@@ -224,8 +260,10 @@ format-charging-foreground = #DD66FF
 type = internal/xwindow
 ;label = %title:0:150:...%
 label = %title%
-label-maxlen = 154
-label-foreground = ${settings.format-foreground}
+;label-maxlen = 154
+label-maxlen = 80
+;label-foreground = ${settings.format-foreground}
+label-foreground = ${colors.red}
 
 [module/filesystem]
 type = internal/fs
@@ -268,13 +306,16 @@ card = intel_backlight
 
 [module/wlan]
 type = internal/network
-;pc:
+;pc void:
 ;interface = wlp0s4f1u2
+;pc arch:
+interface = wlp0s4f1u5
 ;t41:
-interface = wlp2s2
+;interface = wlp2s2
 interval = 3.0
 format-connected = <ramp-signal> 
-format-connected-foreground = #FFdd00
+;format-connected-foreground = #FFdd00
+format-connected-foreground = ${colors.red}
 format-connected-font = 2
 ;<label-connected>
 label-connected = %essid%
